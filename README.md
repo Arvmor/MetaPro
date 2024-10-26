@@ -6,6 +6,8 @@ Welcome to the official GitHub repository of MetaPro! MetaPro is a robust platfo
 
 MetaPro offers a suite of tools tailored to optimize your workflow, facilitate collaboration, and drive efficiency at your workspace. For more details on our services, visit our main site: [MetaPro App](https://metapro.app).
 
+![image](https://github.com/user-attachments/assets/37403e84-ff6a-4cd9-bfc4-a11a4d9aef77)
+
 ## Documentation
 
 For comprehensive guides, API documentation, and in-depth tutorials on how to get the most out of MetaPro, please check out our documentation site: [MetaPro Docs](https://docs.metapro.app).
@@ -17,15 +19,8 @@ For comprehensive guides, API documentation, and in-depth tutorials on how to ge
 - **Security:** Advanced security features to ensure data protection and privacy.
 - **Analytics:** Detailed analytics to help you track and optimize your workflow.
 
-## Quick Start
+![image](https://github.com/user-attachments/assets/9e9b91ca-ce90-4601-aa9c-b2ef32d81229)
 
-To get started with MetaPro, clone this repository and follow the setup instructions below:
-
-```bash
-git clone https://github.com/yourgithub/metapro.git
-cd metapro
-# Follow specific setup instructions
-```
 
 ## Contributing
 
