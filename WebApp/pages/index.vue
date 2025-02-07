@@ -53,16 +53,16 @@
     </div>
     <ULandingCard
         title="Newsletter"
-        description="Veniam minim ipsum anim. Irure voluptate magna dolore id dolore ex quis sint sint et duis dolor enim fugiat."
+        description="Sign up for our newsletter and join the growing MetaPro community."
         icon="i-heroicons-photo"
         color="primary"
-        class="max-w-lg"
+        class="m-8"
     >
-        <UForm :schema="schema" :state="state" @submit="onSubmit">
+        <UForm :schema="schema" :state="state" @submit="onSubmit" class="space-y-2">
             <UFormGroup label="Email" name="email">
-                <UInput v-model="state.email" />
+                <UInput placeholder="you@example.com" icon="i-heroicons-envelope" v-model="state.email" />
             </UFormGroup>
-        
+
             <UButton type="submit">Sign Up</UButton>
         </UForm>
     </ULandingCard>
