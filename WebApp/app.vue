@@ -2,34 +2,31 @@
 import { Base } from '#components';
 
 const links = [{
+  label: 'Discord',
+  icon: 'i-simple-icons-discord',
+  to: 'https://discord.gg/p9RZaBPSdF'
+}, {
+  label: 'Twitter',
+  icon: 'i-simple-icons-x',
+  to: 'https://x.com/theMetaPro'
+},{
   label: 'Docs',
   icon: 'i-heroicons-book-open',
-  to: '/getting-started'
-}, {
-  label: 'Pro',
-  icon: 'i-heroicons-square-3-stack-3d',
-  to: '/pro'
-}, {
-  label: 'Releases',
-  icon: 'i-heroicons-rocket-launch',
-  to: '/releases'
+  to: 'https://docs.metapro.app'
 }]
-
-const ui = {
-  wrapper: "relative text-black",
-};
 </script>
 
 <template>
   <!-- Header -->
-  <UHeader :links="links" :ui="ui">
-    <!-- Font size bigger -->
-    <template #left>
+  <UHeader :ui="{wrapper: 'relative border-none', container: 'md:max-w-full md:mx-4 lg:mx-4 md:px-0 lg:px-0'}">    
+    <template #logo>
       <text class="text-3xl font-bold">MetaPro</text>
+      <UBadge color="primary" variant="subtle" label="v0.6" />
+      <UHeaderLinks :links="links" class="ml-4 items-start hidden lg:flex" />
     </template>
 
     <template #right>
-      <UButton color="primary" variant="solid">Early Access</UButton>
+      <UButton color="primary" variant="solid" :ui="{ rounded: 'rounded-full' }" size="lg">Early Access</UButton>
     </template>
 
   </UHeader>

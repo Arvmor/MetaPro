@@ -7,8 +7,10 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/main.css'
   ],
+  colorMode: {
+    preference: 'light',
+  },
   image: {
-    dir: 'assets/images',
     imagekit: {
       baseURL: 'https://ik.imagekit.io/6dh1gtderb'
     }
