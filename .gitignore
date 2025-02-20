@@ -1,0 +1,4 @@
+# rust ingores
+target/
+.env
+dist/
