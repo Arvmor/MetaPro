@@ -14,11 +14,6 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "light",
   },
-  image: {
-    imagekit: {
-      baseURL: "https://ik.imagekit.io/6dh1gtderb",
-    },
-  },
   vgsap: {
     presets: [],
     breakpoint: 768,

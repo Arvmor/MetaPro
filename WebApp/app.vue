@@ -4,16 +4,19 @@ const links = [
     label: "Discord",
     icon: "i-simple-icons-discord",
     to: "https://discord.gg/p9RZaBPSdF",
+    target: "_blank",
   },
   {
     label: "Twitter",
     icon: "i-simple-icons-x",
     to: "https://x.com/theMetaPro",
+    target: "_blank",
   },
   {
     label: "Docs",
     icon: "i-heroicons-book-open",
     to: "https://docs.metapro.app",
+    target: "_blank",
   },
 ];
 </script>
@@ -26,7 +29,7 @@ const links = [
       container: 'md:max-w-full md:mx-4 lg:mx-4 md:px-0 lg:px-0',
     }"
   >
-    <template #logo>
+    <template #left>
       <text class="text-3xl font-bold">MetaPro</text>
       <UBadge color="primary" variant="subtle" label="v0.6" />
       <UHeaderLinks :links="links" class="ml-4 items-start hidden lg:flex" />
