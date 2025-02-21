@@ -24,6 +24,7 @@ const links = [
 <template>
   <!-- Header -->
   <UHeader
+    v-gsap.entrance.fade.delay-1000.from="{ duration: 1 }"
     :ui="{
       wrapper: 'relative border-none',
       container: 'md:max-w-full md:mx-4 lg:mx-4 md:px-0 lg:px-0',
@@ -54,30 +55,21 @@ const links = [
   </UMain>
 
   <!-- Footer -->
-  <UFooter :links="links">
+  <UFooter
+    :links="links"
+    v-gsap.entrance.fade.delay-1000.from="{ duration: 1 }"
+  >
     <template #left> Copyright © {{ new Date().getFullYear() }} </template>
 
     <template #right>
       <UButton
-        icon="i-simple-icons-x"
         color="gray"
         variant="ghost"
-        to="https://x.com/TheMetaPro"
-        target="_blank"
-      />
-      <UButton
-        icon="i-simple-icons-discord"
-        color="gray"
-        variant="ghost"
-        to="https://discord.gg/p9RZaBPSdF"
-        target="_blank"
-      />
-      <UButton
-        icon="i-simple-icons-github"
-        color="gray"
-        variant="ghost"
-        to="https://github.com/Arvmor/MetaPro"
-        target="_blank"
+        v-for="link in links"
+        :key="link.label"
+        :icon="link.icon"
+        :to="link.to"
+        :target="link.target"
       />
     </template>
   </UFooter>
