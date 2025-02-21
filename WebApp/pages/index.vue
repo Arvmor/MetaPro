@@ -10,6 +10,56 @@ const items = [
       "Private transactions are directly sent to miners, bypassing the mempool. This reduces the risk of frontrunning and MEV.",
   },
 ];
+
+const testimonials = [
+  {
+    icon: "i-simple-icons-x",
+    quote:
+      "One of the best Ethereum Wallets I have ever used. It is simple, fast, and secure.",
+    author: {
+      name: "Poopie",
+      description: "Founder of Doodles",
+      to: "https://x.com/TheMetaPro",
+      avatar: "/images/doodles.jpeg",
+    },
+  },
+  {
+    icon: "i-simple-icons-x",
+    quote:
+      "AirDrops are the future of crypto. I am excited to see what TheMetaPro has in store for us.",
+    author: {
+      name: "Samuel",
+      description: "CTO of RTFKT",
+      to: "https://x.com/TheMetaPro",
+      avatar: "/images/rtfkt.jpg",
+    },
+  },
+  {
+    icon: "i-simple-icons-discord",
+    quote:
+      "I have been using MetaPro for a while now and I am impressed with the speed and security.",
+    author: {
+      name: "Zagabond",
+      description: "Founder of Azuki",
+      to: "https://x.com/TheMetaPro",
+      avatar: "/images/azuki.jpg",
+    },
+  },
+];
+
+const carouselRef = ref();
+
+onMounted(() => {
+  setInterval(() => {
+    if (!carouselRef.value) return;
+
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0);
+    }
+
+    carouselRef.value.next();
+  }, 3000);
+});
 </script>
 
 <template>
@@ -25,6 +75,34 @@ const items = [
       :items="items"
       v-gsap.desktop.add.withPrevious.to="{ y: '-60vh' }"
     />
+
+    <UCarousel
+      :items="testimonials"
+      ref="carouselRef"
+      v-slot="{ item }"
+      indicators
+      :ui="{
+        item: 'basis-full justify-center',
+        container: 'py-8',
+        indicators: {
+          wrapper: 'bottom-auto top-0',
+        },
+      }"
+      class="w-full"
+    >
+      <ULandingTestimonial
+        :icon="item.icon"
+        :quote="item.quote"
+        :author="{
+          name: item.author.name,
+          description: item.author.description,
+          to: item.author.to,
+          avatar: { src: item.author.avatar, loading: 'lazy' },
+          target: '_blank',
+        }"
+        card
+      />
+    </UCarousel>
 
     <!-- Newsletter -->
     <Newsletter />

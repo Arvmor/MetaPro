@@ -55,10 +55,7 @@ const links = [
   </UMain>
 
   <!-- Footer -->
-  <UFooter
-    :links="links"
-    v-gsap.entrance.fade.delay-1000.from="{ duration: 1 }"
-  >
+  <UFooter :links="links">
     <template #left> Copyright © {{ new Date().getFullYear() }} </template>
 
     <template #right>
