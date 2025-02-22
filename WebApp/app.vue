@@ -33,9 +33,14 @@ const links = [
     <template #left>
       <text class="text-3xl font-bold">MetaPro</text>
       <UBadge color="primary" variant="subtle" label="v0.6" />
-      <UHeaderLinks :links="links" class="ml-4 items-start hidden lg:flex" />
+      <UHeaderLinks
+        v-if="!$device.isMobile"
+        :links="links"
+        class="ml-4 items-start"
+      />
     </template>
 
+    <!-- TODO Burger menu not showing on phone  -->
     <template #right>
       <UButton
         color="primary"

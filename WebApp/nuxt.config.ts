@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "v-gsap-nuxt",
     "@nuxt/fonts",
     "@nuxt/image",
+    "@nuxtjs/device",
   ],
   css: ["@/assets/css/main.css"],
   colorMode: {

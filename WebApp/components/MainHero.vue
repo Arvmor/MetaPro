@@ -33,14 +33,22 @@
       >
         <UButton
           v-gsap.magnetic.stronger
-          class="rotate-360"
+          :class="{ 'rotate-360': !($device.isMobile && $device.isIos) }"
           block
           variant="soft"
           size="xl"
           :ui="{ rounded: 'rounded-full' }"
         >
           <template #leading>
-            <NuxtImg preload src="./chrome.svg" draggable="false" />
+            <NuxtImg
+              preload
+              :src="
+                $device.isMobile && $device.isIos ? 'apple.svg' : 'chrome.svg'
+              "
+              height="40"
+              width="40"
+              draggable="false"
+            />
           </template>
           Join for Airdrop</UButton
         >

@@ -68,7 +68,9 @@ onMounted(() => {
     <MainHero v-gsap.desktop.add.to="{ opacity: 0, scale: 0.8 }" />
 
     <!-- Image Section -->
-    <Showcase v-gsap.desktop.add.withPrevious.to="{ y: '-100vh' }" />
+    <Showcase
+      v-gsap.desktop.add.withPrevious.to="{ y: '-100vh', scale: 0.9 }"
+    />
 
     <!-- FAQ Section -->
     <ULandingFAQ
@@ -76,7 +78,9 @@ onMounted(() => {
       v-gsap.desktop.add.withPrevious.to="{ y: '-60vh' }"
     />
 
+    <!-- Testimonials Section -->
     <UCarousel
+      v-gsap.desktop.add.withPrevious.to="{ y: '-35vh' }"
       :items="testimonials"
       ref="carouselRef"
       v-slot="{ item }"
