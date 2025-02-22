@@ -82,13 +82,12 @@ onMounted(() => {
       v-slot="{ item }"
       indicators
       :ui="{
-        item: 'basis-full justify-center',
+        item: 'basis-full justify-center px-2',
         container: 'py-8',
         indicators: {
           wrapper: 'bottom-auto top-0',
         },
       }"
-      class="w-full"
     >
       <ULandingTestimonial
         :icon="item.icon"
