@@ -40,7 +40,7 @@
           :ui="{ rounded: 'rounded-full' }"
         >
           <template #leading>
-            <NuxtImg preload src="./chrome.svg" />
+            <NuxtImg preload src="./chrome.svg" draggable="false" />
           </template>
           Join for Airdrop</UButton
         >

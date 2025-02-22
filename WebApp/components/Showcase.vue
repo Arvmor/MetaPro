@@ -8,24 +8,27 @@
       <NuxtImg
         v-gsap.desktop.add.withPrevious.to="{ x: '-125%' }"
         preload
+        draggable="false"
         src="/images/startPage.png"
         class="absolute left-1/2 -translate-x-1/2 rounded-[20px] shadow-[rgba(0,0,0,0.3)_8px_16px_20px_0vw] hidden sm:block rounded-2xl"
       />
       <NuxtImg
         preload
+        draggable="false"
         src="/images/mainWallet.png"
         class="absolute left-1/2 -translate-x-1/2 rounded-[20px] shadow-[0px_16px_20px_0vw_rgba(0,0,0,0.3)] rounded-2xl"
       />
       <NuxtImg
         v-gsap.desktop.add.withPrevious.to="{ x: '125%' }"
         preload
+        draggable="false"
         src="/images/lockPage.png"
         class="absolute left-1/2 -translate-x-1/2 rounded-[20px] shadow-[rgba(0,0,0,0.3)_-8px_20px_20px_0vw] hidden sm:block rounded-2xl"
       />
     </div>
 
     <!-- Mobile Section -->
-    <MobileShowcase class="sm:hidden" />
+    <MobileShowcase class="sm:hidden my-4" />
 
     <!-- Text Section -->
     <div class="flex flex-col text-center">
