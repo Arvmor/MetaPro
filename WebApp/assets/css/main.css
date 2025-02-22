@@ -1,4 +1,7 @@
-div {
-    font-family: 'Alata', sans-serif;
+* {
+  user-select: none; /* Disable text selection for all elements */
 }
-  
+
+div {
+  font-family: "Alata", sans-serif;
+}

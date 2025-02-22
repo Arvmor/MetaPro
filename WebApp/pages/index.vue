@@ -1,112 +1,109 @@
-<script setup lang="ts">
-    import { object, string, type InferType } from 'yup'
-    import type { FormSubmitEvent } from '#ui/types'
+<script setup>
+const items = [
+  {
+    label: "How do I join the airdrop?",
+    content: 'Click the "Join for Airdrop" button and follow the instructions.',
+  },
+  {
+    label: "What is Private Transaction?",
+    content:
+      "Private transactions are directly sent to miners, bypassing the mempool. This reduces the risk of frontrunning and MEV.",
+  },
+];
 
-    const schema = object({
-        email: string().email('Invalid email').required('Required')
-    })
+const testimonials = [
+  {
+    icon: "i-simple-icons-x",
+    quote:
+      "One of the best Ethereum Wallets I have ever used. It is simple, fast, and secure.",
+    author: {
+      name: "Poopie",
+      description: "Founder of Doodles",
+      to: "https://x.com/TheMetaPro",
+      avatar: "/images/doodles.jpeg",
+    },
+  },
+  {
+    icon: "i-simple-icons-x",
+    quote:
+      "AirDrops are the future of crypto. I am excited to see what TheMetaPro has in store for us.",
+    author: {
+      name: "Samuel",
+      description: "CTO of RTFKT",
+      to: "https://x.com/TheMetaPro",
+      avatar: "/images/rtfkt.jpg",
+    },
+  },
+  {
+    icon: "i-simple-icons-discord",
+    quote:
+      "I have been using MetaPro for a while now and I am impressed with the speed and security.",
+    author: {
+      name: "Zagabond",
+      description: "Founder of Azuki",
+      to: "https://x.com/TheMetaPro",
+      avatar: "/images/azuki.jpg",
+    },
+  },
+];
 
-    type Schema = InferType<typeof schema>
+const carouselRef = ref();
 
-    const state = reactive({
-        email: undefined
-    })
+onMounted(() => {
+  setInterval(() => {
+    if (!carouselRef.value) return;
 
-    async function onSubmit(event: FormSubmitEvent<Schema>) {
-        // Do something with event.data
-        console.log(event.data)
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0);
     }
 
-    const items = [{
-        label: 'Do you have a free trial?',
-        content: 'Ea est ex aliqua exercitation quis et cillum adipisicing sit tempor veniam incididunt labore.'
-        }, {
-        label: 'Can I use Nuxt UI Pro for Open Source projects?',
-        content: 'Et adipisicing do do do sunt irure proident consequat fugiat tempor occaecat commodo fugiat in proident.'
-        }, {
-        label: 'What does “Unlimited minor & patch updates” include?',
-        content: 'Dolor dolor consectetur tempor consectetur sint ut id ex quis voluptate dolore incididunt qui mollit.'
-        }, {
-        label: 'Do you offer technical support?',
-        content: 'Sint id sint incididunt culpa.'
-    }]
+    carouselRef.value.next();
+  }, 3000);
+});
 </script>
 
-
 <template>
-    <div v-gsap.desktop.timeline.pinned="{start: 'top top'}">
+  <div v-gsap.desktop.timeline.pinned="{ start: 'top top' }" class="p-8">
+    <!-- Hero Section -->
+    <MainHero v-gsap.desktop.add.to="{ opacity: 0, scale: 0.8 }" />
 
-        <div>
-            <ULandingSection v-gsap.desktop.add.to="{opacity: 0, scale: 0.8}" class="md:h-screen flex flex-col justify-center items-center ">
-                <template #headline>
-                    <div class="font-thin text-gray-500 sm:text-3xl text-1xl">
-                        <span>The crypto wallet that </span> 
-                        <UIcon name="i-fa6-solid-recycle"/>
-                        <span> earnings</span>
-                    </div>
-                </template>
+    <!-- Image Section -->
+    <Showcase v-gsap.desktop.add.withPrevious.to="{ y: '-100vh' }" />
 
-                <template #title>
-                    <div class="font-thin md:font-black text-primary text-4xl md:text-9xl">
-                        <span>Meta</span><span class="text-black">, but this time</span>
-                    </div>
-                    <div class="font-thin md:font-black text-primary text-4xl md:text-9xl">
-                        <span class="text-black">for </span><span>Pros</span>
-                    </div>
-                </template>
+    <!-- FAQ Section -->
+    <ULandingFAQ
+      :items="items"
+      v-gsap.desktop.add.withPrevious.to="{ y: '-60vh' }"
+    />
 
-                <template #description>
-                    <div class="p-16 space-y-2">
-                        <UButton block color="primary" size="xl" :ui="{ rounded: 'rounded-full' }">Join for Airdrop</UButton>
-                        <div class="font-thin text-gray-400 text-sm flex flex-col items-center">
-                            <span>By using this you agree to our</span>
-                            <u>Terms of Service</u>
-                        </div>
-                    </div>
-                </template>
-            </ULandingSection>
-        </div>
-        
-        <!-- Image Section -->
-        <div class="p-8 h-screen flex flex-col items-center" v-gsap.desktop.add.withPrevious.to="{y: '-100vh'}">
-            <div class="flex h-screen w-screen flex-row py-8 relative" v-gsap.desktop.add.withPrevious.to="{scale: 0.9}" >
-                <NuxtImg preload provider="imagekit" :modifiers="{radius: 30}" src="./startPage.png" class="absolute left-1/2 -translate-x-1/2 rounded-[20px] shadow-[rgba(0,0,0,0.3)_8px_16px_20px_0vw] hidden sm:block" v-gsap.desktop.add.withPrevious.to="{x: '-125%'}" />
-                <NuxtImg preload provider="imagekit" :modifiers="{radius: 30}" src="./mainWallet.png" class="absolute left-1/2 -translate-x-1/2 rounded-[20px] shadow-[0px_16px_20px_0vw_rgba(0,0,0,0.3)]" />
-                <NuxtImg preload provider="imagekit" :modifiers="{radius: 30}" src="./lockPage.png" class="absolute left-1/2 -translate-x-1/2 rounded-[20px] shadow-[rgba(0,0,0,0.3)_-8px_20px_20px_0vw] hidden sm:block" v-gsap.desktop.add.withPrevious.to="{x: '125%'}" />
-            </div>
-            
-            <div class="flex flex-col text-center space-y-2">
-                <span class="text-5xl hidden sm:block font-bold">
-                    MEV Wallet
-                </span>
-                <span class="text-gray-500 text-xl md:text-2xl">
-                    Your transactions are not just secure—They're profitable.
-                </span>
-            </div>
-        </div>
+    <UCarousel
+      :items="testimonials"
+      ref="carouselRef"
+      v-slot="{ item }"
+      indicators
+      :ui="{
+        item: 'basis-full justify-center px-2',
+        container: 'py-8',
+        indicators: {
+          wrapper: 'bottom-auto top-0',
+        },
+      }"
+    >
+      <ULandingTestimonial
+        :icon="item.icon"
+        :quote="item.quote"
+        :author="{
+          name: item.author.name,
+          description: item.author.description,
+          to: item.author.to,
+          avatar: { src: item.author.avatar, loading: 'lazy' },
+          target: '_blank',
+        }"
+        card
+      />
+    </UCarousel>
 
-
-        <div class="px-8">
-            <ULandingFAQ :items="items" />
-        </div>
-    
-        <!-- Newsletter -->
-        <ULandingCard
-            title="Newsletter"
-            description="Sign up for our newsletter and join the growing MetaPro community."
-            icon="i-heroicons-photo"
-            color="primary"
-            class="mx-8"
-        >
-            <UForm :schema="schema" :state="state" @submit="onSubmit" class="space-y-2">
-                <UFormGroup label="Email" name="email">
-                    <UInput placeholder="you@example.com" icon="i-heroicons-envelope" v-model="state.email" />
-                </UFormGroup>
-    
-                <UButton type="submit">Sign Up</UButton>
-            </UForm>
-        </ULandingCard>
-    </div>
+    <!-- Newsletter -->
+    <Newsletter />
+  </div>
 </template>
-
-  
