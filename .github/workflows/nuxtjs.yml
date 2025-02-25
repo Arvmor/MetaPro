@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: "20"
       # Pick your own package manager and build script
+      - run: cd WebApp
       - run: npm install
       - run: npx nuxt build --preset github_pages
       - run: NUXT_APP_BASE_URL=/MetaPro/ npx nuxt build --preset github_pages
