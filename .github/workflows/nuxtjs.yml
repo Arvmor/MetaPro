@@ -6,11 +6,11 @@ on:
     branches:
       - main
       - Nuxt-Website
-env:
-  NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
