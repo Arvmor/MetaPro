@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
@@ -19,7 +17,7 @@ jobs:
           node-version: "20"
       # Pick your own package manager and build script
       - run: cd WebApp; npm ci
-      - run: cd WebApp; NUXT_APP_BASE_URL=/MetaPro/ npx nuxt build --preset github_pages
+      - run: cd WebApp; NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }} NUXT_APP_BASE_URL=/MetaPro/ npx nuxt build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
