@@ -15,9 +15,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
       # Pick your own package manager and build script
       - run: cd WebApp; npm ci
-      - run: cd WebApp; NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }} NUXT_APP_BASE_URL=/MetaPro/ npx nuxt build --preset github_pages
+      - run: cd WebApp; NUXT_APP_BASE_URL=/MetaPro/ npx nuxt build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
