@@ -26,14 +26,13 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-defaults:
-  run:
-    working-directory: ./WebApp
-
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: WebApp
     steps:
       - name: Checkout
         uses: actions/checkout@v4
