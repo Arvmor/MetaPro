@@ -18,14 +18,13 @@ jobs:
         with:
           node-version: "20"
       # Pick your own package manager and build script
-      - run: cd WebApp
-      - run: npm install
-      - run: npx nuxt build --preset github_pages
-      - run: NUXT_APP_BASE_URL=/MetaPro/ npx nuxt build --preset github_pages
+      - run: cd WebApp; npm install
+      - run: cd WebApp; npx nuxt build --preset github_pages
+      - run: cd WebApp; NUXT_APP_BASE_URL=/MetaPro/ npx nuxt build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./.output/public
+          path: ./WebApp/.output/public
   # Deployment job
   deploy:
     # Add a dependency to the build job
