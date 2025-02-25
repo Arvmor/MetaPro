@@ -26,29 +26,28 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+defaults:
+  run:
+    working-directory: ./WebApp
+
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: WebApp
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Ensure package manager
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Detect package manager
+        id: detect-package-manager
         run: |
-          if [ ! -f "package.json" ]; then
-            echo '{}' > package.json
-          fi
-      - name: Determine package manager
-        run: |
-          if [ -f "yarn.lock" ]; then
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
-          elif [ -f "package.json" ]; then
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
+            exit 0
           else
             echo "Unable to determine package manager"
             exit 1
